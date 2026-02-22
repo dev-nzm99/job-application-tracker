@@ -1,299 +1,105 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- daisyui + Tailwind CSS CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     <!-- add fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <title>Job-Tracker</title>
     <style>
-        * {
-            font-family: "Geist", sans-serif;
-        }
+      * {
+        font-family: "Geist", sans-serif;
+      }
     </style>
-</head>
+  </head>
 
-<body class="bg-base-200 w-[65%] m-auto p-5">
+  <body class="bg-base-200 w-[65%] m-auto p-5">
     <header class="mt-5">
-        <h1 class="text-[36px] font-bold mt-5 text-[#002C5C]">Job Application Tracker</h1>
-        <div class="flex justify-between gap-4 m-auto pt-2">
-            <div class="card card-border bg-base-100 w-96 p-5 shadow-sm">
-                <p class="text-[#323B49] opacity-90">Total</p>
-                <h1 class="text-[28px] font-bold text-[#002C5C]">8</h1>
-            </div>
-            <div class="card card-border bg-base-100 w-96 p-5 shadow-sm">
-                <p class="text-[#323B49] opacity-90">Interview</p>
-                <h1 class="text-[28px] font-bold text-[#10B981]">0</h1>
-            </div>
-            <div class="card card-border bg-base-100 w-96 p-5 shadow-sm">
-                <p class="text-[#323B49] opacity-90">Rejected</p>
-                <h1 class="text-[28px] font-bold text-[#EF4444]">0</h1>
-            </div>
-
+      <h1 class="text-[36px] font-bold mt-5 text-[#002C5C]">
+        Job Application Tracker
+      </h1>
+      <div class="flex justify-between gap-4 m-auto pt-2">
+        <div class="card card-border bg-base-100 w-96 p-5 shadow-sm">
+          <p class="text-[#323B49] opacity-90">Total</p>
+          <h1 class="text-[28px] font-bold text-[#002C5C]">8</h1>
         </div>
+        <div class="card card-border bg-base-100 w-96 p-5 shadow-sm">
+          <p class="text-[#323B49] opacity-90">Interview</p>
+          <h1 class="text-[28px] font-bold text-[#10B981]">0</h1>
+        </div>
+        <div class="card card-border bg-base-100 w-96 p-5 shadow-sm">
+          <p class="text-[#323B49] opacity-90">Rejected</p>
+          <h1 class="text-[28px] font-bold text-[#EF4444]">0</h1>
+        </div>
+      </div>
     </header>
 
     <section class="mt-[80px]">
-        <div class="flex justify-between">
-            <h1 class="text-[#002C5C] font-bold text-[24px]">Available Jobs</h1>
-            <p class="text-[#64748B] text-[20px]">8 jobs</p>
+      <div class="flex justify-between">
+        <h1 class="text-[#002C5C] font-bold text-[24px]">Available Jobs</h1>
+        <p class="text-[#64748B] text-[20px]">8 jobs</p>
+      </div>
+
+      <!-- Tabs -->
+      <div class="tabs tabs-border mt-5 gap-2">
+        <!-- all tab -->
+        <input
+          type="radio"
+          name="my_tabs"
+          class="tab bg-base-100 btn active:bg-blue-700 text-black shadow w-[130px] rounded"
+          aria-label="All"
+          checked = 'true'
+        />
+        <div class="tab-content border-base-300 p-5">
+          <div id="job-list-all"></div>
         </div>
 
-        <!-- Tabs -->
-        <div class="tabs tabs-border mt-5 gap-2">
-            <input type="radio" name="my_tabs"
-                class="tab bg-base-100 btn active:bg-blue-700 text-black shadow w-[130px] rounded" aria-label="All"  checked="true" />
-            <div class="tab-content border-base-300 p-5">
-                <div class="card w-[100%] bg-base-100 card-xs shadow-sm mb-5">
-                    <div class="card-body p-6">
-                        <div class="flex justify-between">
-                            <div>
-                                <h2 class="text-[#002C5C] font-bold text-[24px]">Mobile First Corp</h2>
-                                <p>React Native Developer</p>
-                            </div>
-                            <button class="cursor-pointer btn bg-base-100"><i class="fa-solid fa-trash"></i></button>
-                        </div>
-                        <ul class="flex gap-5 text-[#64748B]">
-                            <li>Remote</li>
-                            <li>Full-time </li>
-                            <li>$130,000 - $175,000</li>
-                        </ul>
-                        <div>
-                            <button class="btn mt-2 mb-2">Not Applied</button>
-                            <p>Build cross-platform mobile applications using React Native. Work on products used by
-                                millions of users worldwide.</p>
-                        </div>
-                        <div class="mt-2 flex gap-2">
-                            <button class="btn border-[#10B981] text-[#10B981] text-[16px] font-bold">interview</button>
-                            <button class="btn border-[#EF4444] text-[#EF4444] text-[16px] font-bold">Rejected</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card w-[100%] bg-base-100 card-xs shadow-sm mb-5">
-                    <div class="card-body p-6">
-                        <div class="flex justify-between">
-                            <div>
-                                <h2 class="text-[#002C5C] font-bold text-[24px]">Mobile First Corp</h2>
-                                <p>React Native Developer</p>
-                            </div>
-                            <button class="cursor-pointer btn bg-base-100"><i class="fa-solid fa-trash"></i></button>
-                        </div>
-                        <ul class="flex gap-5 text-[#64748B]">
-                            <li>Remote</li>
-                            <li>Full-time </li>
-                            <li>$130,000 - $175,000</li>
-                        </ul>
-                        <div>
-                            <button class="btn mt-2 mb-2">Not Applied</button>
-                            <p>Build cross-platform mobile applications using React Native. Work on products used by
-                                millions of users worldwide.</p>
-                        </div>
-                        <div class="mt-2 flex gap-2">
-                            <button class="btn border-[#10B981] text-[#10B981] text-[16px] font-bold">interview</button>
-                            <button class="btn border-[#EF4444] text-[#EF4444] text-[16px] font-bold">Rejected</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card w-[100%] bg-base-100 card-xs shadow-sm mb-5">
-                    <div class="card-body p-6">
-                        <div class="flex justify-between">
-                            <div>
-                                <h2 class="text-[#002C5C] font-bold text-[24px]">Mobile First Corp</h2>
-                                <p>React Native Developer</p>
-                            </div>
-                            <button class="cursor-pointer btn bg-base-100"><i class="fa-solid fa-trash"></i></button>
-                        </div>
-                        <ul class="flex gap-5 text-[#64748B]">
-                            <li>Remote</li>
-                            <li>Full-time </li>
-                            <li>$130,000 - $175,000</li>
-                        </ul>
-                        <div>
-                            <button class="btn mt-2 mb-2">Not Applied</button>
-                            <p>Build cross-platform mobile applications using React Native. Work on products used by
-                                millions of users worldwide.</p>
-                        </div>
-                        <div class="mt-2 flex gap-2">
-                            <button class="btn border-[#10B981] text-[#10B981] text-[16px] font-bold">interview</button>
-                            <button class="btn border-[#EF4444] text-[#EF4444] text-[16px] font-bold">Rejected</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card w-[100%] bg-base-100 card-xs shadow-sm mb-5">
-                    <div class="card-body p-6">
-                        <div class="flex justify-between">
-                            <div>
-                                <h2 class="text-[#002C5C] font-bold text-[24px]">Mobile First Corp</h2>
-                                <p>React Native Developer</p>
-                            </div>
-                            <button class="cursor-pointer btn bg-base-100"><i class="fa-solid fa-trash"></i></button>
-                        </div>
-                        <ul class="flex gap-5 text-[#64748B]">
-                            <li>Remote</li>
-                            <li>Full-time </li>
-                            <li>$130,000 - $175,000</li>
-                        </ul>
-                        <div>
-                            <button class="btn mt-2 mb-2">Not Applied</button>
-                            <p>Build cross-platform mobile applications using React Native. Work on products used by
-                                millions of users worldwide.</p>
-                        </div>
-                        <div class="mt-2 flex gap-2">
-                            <button class="btn border-[#10B981] text-[#10B981] text-[16px] font-bold">interview</button>
-                            <button class="btn border-[#EF4444] text-[#EF4444] text-[16px] font-bold">Rejected</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card w-[100%] bg-base-100 card-xs shadow-sm mb-5">
-                    <div class="card-body p-6">
-                        <div class="flex justify-between">
-                            <div>
-                                <h2 class="text-[#002C5C] font-bold text-[24px]">Mobile First Corp</h2>
-                                <p>React Native Developer</p>
-                            </div>
-                            <button class="cursor-pointer btn bg-base-100"><i class="fa-solid fa-trash"></i></button>
-                        </div>
-                        <ul class="flex gap-5 text-[#64748B]">
-                            <li>Remote</li>
-                            <li>Full-time </li>
-                            <li>$130,000 - $175,000</li>
-                        </ul>
-                        <div>
-                            <button class="btn mt-2 mb-2">Not Applied</button>
-                            <p>Build cross-platform mobile applications using React Native. Work on products used by
-                                millions of users worldwide.</p>
-                        </div>
-                        <div class="mt-2 flex gap-2">
-                            <button class="btn border-[#10B981] text-[#10B981] text-[16px] font-bold">interview</button>
-                            <button class="btn border-[#EF4444] text-[#EF4444] text-[16px] font-bold">Rejected</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card w-[100%] bg-base-100 card-xs shadow-sm mb-5">
-                    <div class="card-body p-6">
-                        <div class="flex justify-between">
-                            <div>
-                                <h2 class="text-[#002C5C] font-bold text-[24px]">Mobile First Corp</h2>
-                                <p>React Native Developer</p>
-                            </div>
-                            <button class="cursor-pointer btn bg-base-100"><i class="fa-solid fa-trash"></i></button>
-                        </div>
-                        <ul class="flex gap-5 text-[#64748B]">
-                            <li>Remote</li>
-                            <li>Full-time </li>
-                            <li>$130,000 - $175,000</li>
-                        </ul>
-                        <div>
-                            <button class="btn mt-2 mb-2">Not Applied</button>
-                            <p>Build cross-platform mobile applications using React Native. Work on products used by
-                                millions of users worldwide.</p>
-                        </div>
-                        <div class="mt-2 flex gap-2">
-                            <button class="btn border-[#10B981] text-[#10B981] text-[16px] font-bold">interview</button>
-                            <button class="btn border-[#EF4444] text-[#EF4444] text-[16px] font-bold">Rejected</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card w-[100%] bg-base-100 card-xs shadow-sm mb-5">
-                    <div class="card-body p-6">
-                        <div class="flex justify-between">
-                            <div>
-                                <h2 class="text-[#002C5C] font-bold text-[24px]">Mobile First Corp</h2>
-                                <p>React Native Developer</p>
-                            </div>
-                            <button class="cursor-pointer btn bg-base-100"><i class="fa-solid fa-trash"></i></button>
-                        </div>
-                        <ul class="flex gap-5 text-[#64748B]">
-                            <li>Remote</li>
-                            <li>Full-time </li>
-                            <li>$130,000 - $175,000</li>
-                        </ul>
-                        <div>
-                            <button class="btn mt-2 mb-2">Not Applied</button>
-                            <p>Build cross-platform mobile applications using React Native. Work on products used by
-                                millions of users worldwide.</p>
-                        </div>
-                        <div class="mt-2 flex gap-2">
-                            <button class="btn border-[#10B981] text-[#10B981] text-[16px] font-bold">interview</button>
-                            <button class="btn border-[#EF4444] text-[#EF4444] text-[16px] font-bold">Rejected</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card w-[100%] bg-base-100 card-xs shadow-sm mb-5">
-                    <div class="card-body p-6">
-                        <div class="flex justify-between">
-                            <div>
-                                <h2 class="text-[#002C5C] font-bold text-[24px]">Mobile First Corp</h2>
-                                <p>React Native Developer</p>
-                            </div>
-                            <button class="cursor-pointer btn bg-base-100"><i class="fa-solid fa-trash"></i></button>
-                        </div>
-                        <ul class="flex gap-5 text-[#64748B]">
-                            <li>Remote</li>
-                            <li>Full-time </li>
-                            <li>$130,000 - $175,000</li>
-                        </ul>
-                        <div>
-                            <button class="btn mt-2 mb-2">Not Applied</button>
-                            <p>Build cross-platform mobile applications using React Native. Work on products used by
-                                millions of users worldwide.</p>
-                        </div>
-                        <div class="mt-2 flex gap-2">
-                            <button class="btn border-[#10B981] text-[#10B981] text-[16px] font-bold">interview</button>
-                            <button class="btn border-[#EF4444] text-[#EF4444] text-[16px] font-bold">Rejected</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <input type="radio" name="my_tabs"
-                class="tab bg-base-100 btn active:bg-blue-700 text-black shadow w-[130px] rounded"
-                aria-label="Interview" />
-            <div class="tab-content border-base-300 bg-base-100 h-[450px] p-5">
-                <div class="flex flex-col justify-center items-center text-center gap-2 mt-[90px]">
-                    <div>
-                        <img src="./src/jobs.png" alt="jobs">
-                    </div>
-                    <div>
-                        <h1 class="text-[#002C5C] font-bold text-[24px]">No jobs available</h1>
-                        <p class="text-[#64748B]">Check back soon for new job opportunities</p>
-                    </div>
-                </div>
-            </div>
-
-            <input type="radio" name="my_tabs"
-                class="tab bg-base-100 btn active:bg-blue-700 text-black shadow w-[130px] rounded"
-                aria-label="Rejected" />
-            <div class="tab-content border-base-300 bg-base-100 h-[450px] p-5">
-                <div class="flex flex-col justify-center items-center text-center gap-2 mt-[90px]">
-                    <div>
-                        <img src="./src/jobs.png" alt="jobs">
-                    </div>
-                    <div>
-                        <h1 class="text-[#002C5C] font-bold text-[24px]">No jobs available</h1>
-                        <p class="text-[#64748B]">Check back soon for new job opportunities</p>
-                    </div>
-                </div>
-            </div>
+        <!-- interview tab -->
+        <input
+          type="radio"
+          name="my_tabs"
+          class="tab bg-base-100 btn active:bg-blue-700 text-black shadow w-[130px] rounded"
+          aria-label="Interview"
+        />
+        <div class="tab-content border-base-300 p-5">
+          <div id="job-list-interview"></div>
         </div>
 
+        <!-- rejected tab -->
+        <input
+          type="radio"
+          name="my_tabs"
+          class="tab bg-base-100 btn active:bg-blue-700 text-black shadow w-[130px] rounded"
+          aria-label="Rejected"
+        />
+        <div class="tab-content border-base-300 p-5">
+          <div id="job-list-rejected"></div>
+        </div>
+      </div>
     </section>
-
-    </main>
-</body>
-
+    <script src="./script/script.js"></script>
+  </body>
 </html>
