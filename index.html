@@ -38,32 +38,32 @@
 
   <body class="bg-base-200 sm:w-[65%] m-auto sm:p-5 p-3">
     <header class="sm:mt-5">
-      <h1 class="text-[36px] font-bold mt-5 text-[#002C5C]">
+      <h1 class="sm:text-[36px] text-[32px] font-bold mt-5 text-[#002C5C]">
         Job Application Tracker
       </h1>
 
-      <div class="flex justify-between gap-4 m-auto pt-2">
-        <div class="card card-border bg-base-100 w-96 p-5 shadow-sm">
+      <div class="flex justify-between sm:gap-4 gap-2 m-auto pt-2">
+        <div class="card card-border bg-base-100 w-96 sm:p-5 p-3 shadow-sm">
           <p class="text-[#323B49] opacity-90">Total</p>
-          <h1 class="text-[28px] font-bold text-[#002C5C]" id="total-jobs-cnt">
+          <h1 class="sm:text-[28px] text-[20px] font-bold text-[#002C5C]" id="total-jobs-cnt">
             0
           </h1>
         </div>
 
-        <div class="card card-border bg-base-100 w-96 p-5 shadow-sm">
+        <div class="card card-border bg-base-100 w-96 sm:p-5 p-3 shadow-sm">
           <p class="text-[#323B49] opacity-90">Interview</p>
           <h1
-            class="text-[28px] font-bold text-[#10B981]"
+            class="sm:text-[28px] text-[20px] font-bold text-[#10B981]"
             id="interview-jobs-cnt"
           >
             0
           </h1>
         </div>
 
-        <div class="card card-border bg-base-100 w-96 p-5 shadow-sm">
+        <div class="card card-border bg-base-100 w-96 sm:p-5 p-3 shadow-sm">
           <p class="text-[#323B49] opacity-90">Rejected</p>
           <h1
-            class="text-[28px] font-bold text-[#EF4444]"
+            class="sm:text-[28px] text-[20px] font-bold text-[#EF4444]"
             id="rejected-jobs-cnt"
           >
             0
@@ -72,14 +72,14 @@
       </div>
     </header>
 
-    <section class="mt-[80px]">
-      <div class="flex justify-between">
+    <section class="sm:mt-[80px] mt-[60px]">
+      <div class="flex justify-between items-center">
         <h1 class="text-[#002C5C] font-bold text-[24px]">Available Jobs</h1>
-        <p class="text-[#64748B] text-[20px]" id="total-jobs">0 jobs</p>
+        <p class="text-[#64748B] sm:text-[20px] text-[16px]" id="total-jobs">0 jobs</p>
       </div>
 
       <!-- Tabs -->
-      <div class="tabs tabs-border mt-5 gap-2">
+      <div class="tabs tabs-border mt-5 sm:gap-2 gap-1">
         <!-- all tab -->
         <input
           id="tab-all"
