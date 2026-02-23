@@ -22,7 +22,6 @@ let jobs = [
     description: "Develop modern web applications using React and Tailwind.",
     status: "Not Applied",
   },
-
   {
     id: 3,
     company: "DataWave",
@@ -126,6 +125,30 @@ function emptyStateHTML() {
   `;
 }
 
+function updateCounts() {
+  const total = jobs.length;
+  const interview = jobs.filter((j) => j.status === "Interview").length;
+  const rejected = jobs.filter((j) => j.status === "Rejected").length;
+
+  const totalCntEl = document.getElementById("total-jobs-cnt");
+  const interviewCntEl = document.getElementById("interview-jobs-cnt");
+  const rejectedCntEl = document.getElementById("rejected-jobs-cnt");
+  const totalJobsTextEl = document.getElementById("total-jobs");
+
+  totalCntEl.innerText = total;
+  interviewCntEl.innerText = interview;
+  rejectedCntEl.innerText = rejected;
+
+  let filteredJobsCount = total;
+  if (currentFilter === "interview") filteredJobsCount = interview;
+  if (currentFilter === "rejected") filteredJobsCount = rejected;
+
+  totalJobsTextEl.innerText =
+    currentFilter === "all"
+      ? `${total} jobs`
+      : `${filteredJobsCount} of ${total} jobs`;
+}
+
 function renderList(containerId, listJobs) {
   const container = document.getElementById(containerId);
   container.innerHTML = "";
@@ -203,6 +226,8 @@ function renderJobs() {
 
   const rejectedJobs = jobs.filter((job) => job.status === "Rejected");
   renderList("job-list-rejected", rejectedJobs);
+
+  updateCounts();
 }
 
 function updateStatus(id, newStatus) {
@@ -210,12 +235,42 @@ function updateStatus(id, newStatus) {
   if (!job) return;
 
   job.status = newStatus;
-  renderJobs(); 
+  renderJobs();
 }
 
 function deleteJob(id) {
   jobs = jobs.filter((job) => job.id !== id);
-  renderJobs(); 
+  renderJobs();
 }
 
+function setupTabs() {
+  const tabAll = document.getElementById("tab-all");
+  const tabInterview = document.getElementById("tab-interview");
+  const tabRejected = document.getElementById("tab-rejected");
+
+  if (!tabAll || !tabInterview || !tabRejected) return;
+
+  tabAll.addEventListener("change", () => {
+    if (tabAll.checked) {
+      currentFilter = "all";
+      updateCounts();
+    }
+  });
+
+  tabInterview.addEventListener("change", () => {
+    if (tabInterview.checked) {
+      currentFilter = "interview";
+      updateCounts();
+    }
+  });
+
+  tabRejected.addEventListener("change", () => {
+    if (tabRejected.checked) {
+      currentFilter = "rejected";
+      updateCounts();
+    }
+  });
+}
+
+setupTabs();
 renderJobs();

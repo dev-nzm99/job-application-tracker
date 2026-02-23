@@ -41,18 +41,33 @@
       <h1 class="text-[36px] font-bold mt-5 text-[#002C5C]">
         Job Application Tracker
       </h1>
+
       <div class="flex justify-between gap-4 m-auto pt-2">
         <div class="card card-border bg-base-100 w-96 p-5 shadow-sm">
           <p class="text-[#323B49] opacity-90">Total</p>
-          <h1 class="text-[28px] font-bold text-[#002C5C]">8</h1>
+          <h1 class="text-[28px] font-bold text-[#002C5C]" id="total-jobs-cnt">
+            0
+          </h1>
         </div>
+
         <div class="card card-border bg-base-100 w-96 p-5 shadow-sm">
           <p class="text-[#323B49] opacity-90">Interview</p>
-          <h1 class="text-[28px] font-bold text-[#10B981]">0</h1>
+          <h1
+            class="text-[28px] font-bold text-[#10B981]"
+            id="interview-jobs-cnt"
+          >
+            0
+          </h1>
         </div>
+
         <div class="card card-border bg-base-100 w-96 p-5 shadow-sm">
           <p class="text-[#323B49] opacity-90">Rejected</p>
-          <h1 class="text-[28px] font-bold text-[#EF4444]">0</h1>
+          <h1
+            class="text-[28px] font-bold text-[#EF4444]"
+            id="rejected-jobs-cnt"
+          >
+            0
+          </h1>
         </div>
       </div>
     </header>
@@ -60,18 +75,19 @@
     <section class="mt-[80px]">
       <div class="flex justify-between">
         <h1 class="text-[#002C5C] font-bold text-[24px]">Available Jobs</h1>
-        <p class="text-[#64748B] text-[20px]">8 jobs</p>
+        <p class="text-[#64748B] text-[20px]" id="total-jobs">0 jobs</p>
       </div>
 
       <!-- Tabs -->
       <div class="tabs tabs-border mt-5 gap-2">
         <!-- all tab -->
         <input
+          id="tab-all"
           type="radio"
           name="my_tabs"
           class="tab bg-base-100 btn active:bg-blue-700 text-black shadow w-[130px] rounded"
           aria-label="All"
-          checked = 'true'
+          checked="true"
         />
         <div class="tab-content border-base-300 p-5">
           <div id="job-list-all"></div>
@@ -79,6 +95,7 @@
 
         <!-- interview tab -->
         <input
+          id="tab-interview"
           type="radio"
           name="my_tabs"
           class="tab bg-base-100 btn active:bg-blue-700 text-black shadow w-[130px] rounded"
@@ -90,6 +107,7 @@
 
         <!-- rejected tab -->
         <input
+          id="tab-rejected"
           type="radio"
           name="my_tabs"
           class="tab bg-base-100 btn active:bg-blue-700 text-black shadow w-[130px] rounded"
@@ -100,6 +118,7 @@
         </div>
       </div>
     </section>
+
     <script src="./script/script.js"></script>
   </body>
 </html>
